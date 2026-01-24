@@ -1,0 +1,225 @@
+:root {
+  /* Brand Colors - Warm & Premium Pizzeria Theme */
+  --color-primary: 20 90% 55%;
+  /* Vivid Orange-Red (Tomato/Sauce) */
+  --color-primary-dark: 15 90% 45%;
+  --color-primary-light: 20 100% 96%;
+
+  --color-secondary: 45 100% 50%;
+  /* Golden Yellow (Cheese/Crust) */
+  --color-secondary-dark: 40 100% 40%;
+
+  --color-accent: 140 70% 40%;
+  /* Fresh Basil Green */
+
+  /* Neutral Colors - Darker Base */
+  --color-bg-base: 0 0% 98%;
+  /* Off-white */
+  --color-bg-paper: 0 0% 100%;
+  /* Pure white */
+  --color-text-primary: 0 0% 10%;
+  /* Almost Black */
+  --color-text-secondary: 0 0% 40%;
+  --color-border: 0 0% 90%;
+
+  /* Effects */
+  --shadow-sm: 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 6px 12px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 15px 25px -5px rgb(0 0 0 / 0.15);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Background Overlay */
+  --bg-overlay-opacity: 0.55;
+}
+
+/* Dark Mode Support (System) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: 20 85% 55%;
+    --color-primary-light: 20 60% 20%;
+
+    --color-bg-base: 220 20% 10%;
+    /* Keeping slightly blue-grey for deep dark feel */
+    --color-bg-paper: 220 20% 14%;
+    --color-text-primary: 40 20% 96%;
+    /* Warm white */
+    --color-text-secondary: 220 10% 70%;
+    --color-border: 220 20% 20%;
+
+    --bg-overlay-opacity: 0.65;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: hsl(var(--color-text-primary));
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  min-height: 100vh;
+  /* Premium Dark Background Texture with Blur Overlay */
+}
+
+/* Background Implementation */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-image: url('/bg-pizzeria.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+  /* Blur effect requested */
+  transform: scale(1.05);
+  /* Prevent blur edges showing */
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: hsl(var(--color-bg-base) / var(--bg-overlay-opacity));
+  /* Blurred Color Overlay */
+  backdrop-filter: blur(5px);
+  /* Glassmorphism extra blur */
+}
+
+/* Layout & Structure */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Header & Footer Transparency */
+.header {
+  border-bottom: 1px solid hsl(var(--color-border) / 0.5);
+  /* Semi-transparent border */
+  padding: 1rem 0;
+  background-color: hsl(var(--color-bg-paper) / 0.8);
+  /* 80% Opaque */
+  backdrop-filter: blur(12px);
+  /* Glass effect */
+  position: sticky;
+  /* Optional: keeps header top */
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.3s;
+}
+
+.footer {
+  background-color: hsl(var(--color-bg-paper) / 0.7);
+  /* 70% Opaque */
+  padding: 2rem 0;
+  border-top: 1px solid hsl(var(--color-border) / 0.5);
+  backdrop-filter: blur(12px);
+  margin-top: auto;
+  /* Ensures it pushes to bottom if flex fails, but flex handles it */
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  /* More modern rounded buttons */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: hsl(var(--color-primary));
+  color: white;
+  box-shadow: 0 4px 14px 0 hsl(var(--color-primary) / 0.4);
+}
+
+.btn-primary:hover {
+  background-color: hsl(var(--color-primary-dark));
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 hsl(var(--color-primary) / 0.6);
+}
+
+.btn-secondary {
+  background-color: hsl(var(--color-secondary));
+  color: #1a1a1a;
+}
+
+.btn-secondary:hover {
+  background-color: hsl(var(--color-secondary-dark));
+}
+
+.card {
+  background-color: hsl(var(--color-bg-paper));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid hsl(var(--color-border));
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  /* Subtle lift on hover for aesthetics */
+  /* transform: translateY(-2px); */
+  /* box-shadow: var(--shadow-lg); */
+}
+
+.grid-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

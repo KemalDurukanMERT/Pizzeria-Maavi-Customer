@@ -1,0 +1,168 @@
+export const translations = {
+    en: {
+        // Header
+        'nav.menu': 'Menu',
+        'nav.login': 'Login',
+        'nav.register': 'Register',
+        'nav.profile': 'Profile',
+        'nav.logout': 'Logout',
+        'nav.home': 'Pizzeria Mavi',
+
+        // Home
+        'home.hero.title': 'Welcome to Pizzeria Mavi',
+        'home.hero.subtitle': 'The best pizza in town, delivered to your door.',
+
+        // Menu
+        'menu.title': 'Our Menu',
+        'menu.subtitle': 'Delicious pizzas, pasta, and more.',
+        'menu.filter.all': 'All',
+        'menu.loading': 'Loading menu...',
+        'menu.error': 'Failed to load menu. Please try again later.',
+
+        // Product Card & Details
+        'product.add': 'Add',
+        'product.customize': 'Customize & Add',
+        'product.addToCart': 'Add to Cart',
+        'product.back': 'Back to Menu',
+        'product.prepTime': 'min',
+        'product.customizable': 'Customizable',
+        'product.customize.title': 'Customize your order',
+        'product.customize.desc': 'Add or remove ingredients to your taste.',
+        'product.ingredients.included': 'Included Ingredients',
+        'product.ingredients.extra': 'Extra Toppings',
+        'product.total': 'Total',
+
+        // Cart
+        'cart.title': 'Your Basket',
+        'cart.empty': 'Your cart is empty',
+        'cart.empty.subtitle': "Looks like you haven't added any pizzas yet.",
+        'cart.browse': 'Browse Menu',
+        'cart.clear': 'Clear Basket',
+        'cart.summary': 'Summary',
+        'cart.subtotal': 'Subtotal',
+        'cart.delivery': 'Delivery (est.)',
+        'cart.checkout': 'Proceed to Checkout',
+
+        // Checkout
+        'checkout.title': 'Checkout',
+        'checkout.contact': 'Contact Information',
+        'checkout.delivery': 'Delivery Method',
+        'checkout.payment': 'Payment',
+        'checkout.submit': 'Pay',
+        'checkout.processing': 'Processing Order...',
+        'checkout.method.delivery': 'Delivery',
+        'checkout.method.pickup': 'Pickup',
+        'checkout.firstName': 'First Name',
+        'checkout.lastName': 'Last Name',
+        'checkout.email': 'Email',
+        'checkout.phone': 'Phone Number',
+        'checkout.street': 'Street Address',
+        'checkout.city': 'City',
+        'checkout.postalCode': 'Postal Code',
+        'checkout.instructions': 'Delivery Instructions (Door code, etc.)',
+
+        // Order Tracking
+        'order.status.received': 'Order Received',
+        'order.status.confirmed': 'Confirmed',
+        'order.status.preparing': 'Preparing',
+        'order.status.ready': 'Ready',
+        'order.status.delivering': 'On Process',
+        'order.status.completed': 'Delivered',
+        'order.details': 'Order Details',
+        'order.estimated': 'Estimated arrival',
+
+        // Auth
+        'auth.login.title': 'Welcome Back',
+        'auth.register.title': 'Create Account',
+        'auth.email': 'Email',
+        'auth.password': 'Password',
+        'auth.confirmPassword': 'Confirm Password',
+        'auth.submit.login': 'Login',
+        'auth.submit.register': 'Register',
+        'auth.hasAccount': 'Already have an account?',
+        'auth.noAccount': "Don't have an account?",
+    },
+    fi: {
+        // Header
+        'nav.menu': 'Ruokalista',
+        'nav.login': 'Kirjaudu',
+        'nav.register': 'Rekisteröidy',
+        'nav.profile': 'Profiili',
+        'nav.logout': 'Kirjaudu ulos',
+        'nav.home': 'Pizzeria Mavi',
+
+        // Home
+        'home.hero.title': 'Tervetuloa Pizzeria Maviin',
+        'home.hero.subtitle': 'Kaupungin paras pizza kotiovellesi toimitettuna.',
+
+        // Menu
+        'menu.title': 'Ruokalista',
+        'menu.subtitle': 'Herkulliset pizzat, pastat ja paljon muuta.',
+        'menu.filter.all': 'Kaikki',
+        'menu.loading': 'Ladataan listaa...',
+        'menu.error': 'Ruokalistan lataus epäonnistui. Yritä myöhemmin uudelleen.',
+
+        // Product Card & Details
+        'product.add': 'Lisää',
+        'product.customize': 'Muokkaa & Lisää',
+        'product.addToCart': 'Lisää ostoskoriin',
+        'product.back': 'Takaisin listaan',
+        'product.prepTime': 'min',
+        'product.customizable': 'Muokattava',
+        'product.customize.title': 'Muokkaa tilaustasi',
+        'product.customize.desc': 'Lisää tai poista täytteitä makusi mukaan.',
+        'product.ingredients.included': 'Sisältää',
+        'product.ingredients.extra': 'Lisätäytteet',
+        'product.total': 'Yhteensä',
+
+        // Cart
+        'cart.title': 'Ostoskori',
+        'cart.empty': 'Ostoskorisi on tyhjä',
+        'cart.empty.subtitle': "Et ole vielä lisännyt tuotteita.",
+        'cart.browse': 'Selaa ruokalistaa',
+        'cart.clear': 'Tyhjennä kori',
+        'cart.summary': 'Yhteenveto',
+        'cart.subtotal': 'Välisumma',
+        'cart.delivery': 'Toimitus (arvio)',
+        'cart.checkout': 'Siirry kassalle',
+
+        // Checkout
+        'checkout.title': 'Kassa',
+        'checkout.contact': 'Yhteystiedot',
+        'checkout.delivery': 'Toimitustapa',
+        'checkout.payment': 'Maksutapa',
+        'checkout.submit': 'Maksa',
+        'checkout.processing': 'Käsitellään...',
+        'checkout.method.delivery': 'Kotiinkuljetus',
+        'checkout.method.pickup': 'Nouto',
+        'checkout.firstName': 'Etunimi',
+        'checkout.lastName': 'Sukunimi',
+        'checkout.email': 'Sähköposti',
+        'checkout.phone': 'Puhelinnumero',
+        'checkout.street': 'Katuosoite',
+        'checkout.city': 'Kaupunki',
+        'checkout.postalCode': 'Postinumero',
+        'checkout.instructions': 'Lisätiedot (ovikoodi, ym.)',
+
+        // Order Tracking
+        'order.status.received': 'Vastaanotettu',
+        'order.status.confirmed': 'Vahvistettu',
+        'order.status.preparing': 'Valmistetaan',
+        'order.status.ready': 'Valmis',
+        'order.status.delivering': 'Kuljetuksessa',
+        'order.status.completed': 'Toimitettu',
+        'order.details': 'Tilauksen tiedot',
+        'order.estimated': 'Arvioitu saapuminen',
+
+        // Auth
+        'auth.login.title': 'Kirjaudu sisään',
+        'auth.register.title': 'Luo tili',
+        'auth.email': 'Sähköposti',
+        'auth.password': 'Salasana',
+        'auth.confirmPassword': 'Vahvista salasana',
+        'auth.submit.login': 'Kirjaudu',
+        'auth.submit.register': 'Rekisteröidy',
+        'auth.hasAccount': 'Onko sinulla jo tili?',
+        'auth.noAccount': "Eikö sinulla ole tiliä?",
+    }
+};

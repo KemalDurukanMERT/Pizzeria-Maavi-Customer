@@ -5,6 +5,8 @@ export const translations = {
         'nav.login': 'Login',
         'nav.register': 'Register',
         'nav.profile': 'Profile',
+        'nav.orders': 'Orders',
+        'nav.track': 'Track',
         'nav.logout': 'Logout',
         'nav.home': 'Pizzeria Mavi',
 
@@ -70,6 +72,10 @@ export const translations = {
         'order.status.completed': 'Delivered',
         'order.details': 'Order Details',
         'order.estimated': 'Estimated arrival',
+        'order.history': 'Order History',
+        'customization.ADD': 'Add',
+        'customization.REMOVE': 'No',
+        'customization.EXTRA': 'Extra',
 
         // Auth
         'auth.login.title': 'Welcome Back',
@@ -88,6 +94,8 @@ export const translations = {
         'nav.login': 'Kirjaudu',
         'nav.register': 'Rekisteröidy',
         'nav.profile': 'Profiili',
+        'nav.orders': 'Tilaukset',
+        'nav.track': 'Seuranta',
         'nav.logout': 'Kirjaudu ulos',
         'nav.home': 'Pizzeria Mavi',
 
@@ -153,6 +161,10 @@ export const translations = {
         'order.status.completed': 'Toimitettu',
         'order.details': 'Tilauksen tiedot',
         'order.estimated': 'Arvioitu saapuminen',
+        'order.history': 'Tilaushistoria',
+        'customization.ADD': 'Lisää',
+        'customization.REMOVE': 'Ei',
+        'customization.EXTRA': 'Tupla',
 
         // Auth
         'auth.login.title': 'Kirjaudu sisään',

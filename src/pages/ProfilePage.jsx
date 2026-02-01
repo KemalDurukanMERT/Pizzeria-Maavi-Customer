@@ -153,49 +153,15 @@ export default function ProfilePage() {
                     </div>
                 </div>
 
-                {/* Order History */}
-                <div>
-                    <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Order History</h2>
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : orders.length === 0 ? (
-                        <div className="card" style={{ padding: '2rem', textAlign: 'center', color: 'hsl(var(--color-text-secondary))' }}>
-                            <ShoppingBag size={32} style={{ marginBottom: '0.5rem' }} />
-                            <p>No orders found.</p>
-                        </div>
-                    ) : (
-                        <div style={{ display: 'grid', gap: '1rem' }}>
-                            {orders.slice(0, 3).map(order => (
-                                <div key={order.id} className="card" style={{ padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <div>
-                                        <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Order #{order.orderNumber}</div>
-                                        <div style={{ fontSize: '0.85rem', color: 'hsl(var(--color-text-secondary))' }}>
-                                            {new Date(order.createdAt).toLocaleDateString()}
-                                        </div>
-                                        <div style={{ marginTop: '0.5rem' }}>
-                                            <span className="badge" style={{
-                                                // Simple mapping for demo
-                                                backgroundColor: order.status === 'COMPLETED' ? 'hsl(150 60% 90%)' : 'hsl(35 100% 90%)',
-                                                color: order.status === 'COMPLETED' ? 'hsl(150 60% 40%)' : 'hsl(35 100% 40%)'
-                                            }}>
-                                                {t(`order.status.${order.status.toLowerCase()}`) || order.status}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div style={{ textAlign: 'right' }}>
-                                        <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>€{order.totalAmount.toFixed(2)}</div>
-                                        <button
-                                            className="btn btn-ghost"
-                                            style={{ marginTop: '0.5rem', fontSize: '0.85rem' }}
-                                            onClick={() => navigate(`/track/${order.id}`)}
-                                        >
-                                            View Details
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                {/* Order History Preview */}
+                <div className="card" style={{ padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                        <h2 style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>{t('order.history')}</h2>
+                        <p style={{ color: 'hsl(var(--color-text-secondary))', fontSize: '0.9rem' }}>View and track your previous orders.</p>
+                    </div>
+                    <button onClick={() => navigate('/orders')} className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <ShoppingBag size={18} /> View All
+                    </button>
                 </div>
             </div>
         </div>

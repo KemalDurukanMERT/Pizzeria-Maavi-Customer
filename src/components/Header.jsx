@@ -23,6 +23,7 @@ export default function Header() {
 
                 <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
                     <Link to="/menu" style={{ textDecoration: 'none', color: 'inherit', fontWeight: '500' }}>{t('nav.menu')}</Link>
+                    <Link to="/track" style={{ textDecoration: 'none', color: 'inherit', fontWeight: '500' }}>{t('nav.track') || 'Track'}</Link>
 
                     <Link to="/cart" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -52,7 +53,7 @@ export default function Header() {
                     <button
                         onClick={toggleLanguage}
                         className="btn"
-                        style={{ padding: '0.5rem', border: '1px solid currentColor', borderRadius: 'var(--radius-md)', background: 'transparent' }}
+                        style={{ padding: '0.5rem', border: '1px solid currentColor', borderRadius: 'var(--radius-md)', background: 'transparent', color: 'inherit' }}
                         aria-label="Toggle Language"
                     >
                         <span style={{ marginRight: '0.5rem', fontWeight: 'bold' }}>{language.toUpperCase()}</span>
@@ -60,9 +61,10 @@ export default function Header() {
                     </button>
 
                     {user ? (
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                            <Link to="/profile" style={{ fontWeight: '500' }}>{t('nav.profile')}</Link>
-                            <button onClick={logout} className="btn btn-secondary">{t('nav.logout')}</button>
+                        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                            <Link to="/orders" style={{ fontWeight: '500', color: 'inherit', textDecoration: 'none' }}>{t('nav.orders') || 'Orders'}</Link>
+                            <Link to="/profile" style={{ fontWeight: '500', color: 'inherit', textDecoration: 'none' }}>{t('nav.profile')}</Link>
+                            <button onClick={logout} className="btn btn-secondary" style={{ padding: '0.5rem 1rem' }}>{t('nav.logout')}</button>
                         </div>
                     ) : (
                         <div style={{ display: 'flex', gap: '1rem' }}>

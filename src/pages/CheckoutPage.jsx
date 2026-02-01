@@ -74,7 +74,8 @@ export default function CheckoutPage() {
                 instructions: formData.instructions
             } : undefined,
             paymentMethod: formData.paymentMethod,
-            customerNotes: formData.instructions || undefined
+            customerNotes: formData.instructions || undefined,
+            customerName: `${formData.firstName} ${formData.lastName}`.trim(),
         };
 
         try {
@@ -90,6 +91,12 @@ export default function CheckoutPage() {
                     window.location.href = paymentData.data.paymentUrl;
                     return;
                 }
+            }
+
+            // 3. Save to localStorage for tracking (useful for guest users)
+            const recentOrders = JSON.parse(localStorage.getItem('recentOrders') || '[]');
+            if (!recentOrders.includes(order.id)) {
+                localStorage.setItem('recentOrders', JSON.stringify([order.id, ...recentOrders].slice(0, 5)));
             }
 
             clearCart();

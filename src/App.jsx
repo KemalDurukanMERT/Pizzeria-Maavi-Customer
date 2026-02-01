@@ -8,6 +8,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
+import MyOrdersPage from './pages/MyOrdersPage';
 import OrderTrackingPage from './pages/OrderTrackingPage';
 import MockPaymentPage from './pages/MockPaymentPage';
 import Header from './components/Header';
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/product/:id" element={<ProductPage />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/track" element={<OrderTrackingPage />} />
                     <Route path="/track/:orderId" element={<OrderTrackingPage />} />
                     <Route path="/mock-payment" element={<MockPaymentPage />} />
 
@@ -31,6 +33,7 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/orders" element={<MyOrdersPage />} />
                 </Routes>
             </main>
             <Footer />

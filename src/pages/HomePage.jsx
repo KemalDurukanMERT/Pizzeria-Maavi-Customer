@@ -6,9 +6,17 @@ export default function HomePage() {
     const { t } = useLanguage();
 
     return (
-        <div className="container" style={{ padding: '4rem 1rem', textAlign: 'center' }}>
-            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-                <h1 style={{ fontSize: '3rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
+        <div className="container" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flex: 1,
+            textAlign: 'center',
+            padding: '2rem 1rem'
+        }}>
+            <div style={{ maxWidth: '800px', width: '100%' }} >
+                <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', lineHeight: '1.2', fontWeight: '800' }}>
                     {t('home.hero.title')}
                 </h1>
                 <p style={{ fontSize: '1.5rem', color: 'hsl(var(--color-text-secondary))', marginBottom: '3rem' }}>
@@ -16,7 +24,7 @@ export default function HomePage() {
                 </p>
                 <button
                     className="btn btn-primary"
-                    style={{ padding: '1rem 2rem', fontSize: '1.25rem' }}
+                    style={{ padding: '1.2rem 2.5rem', fontSize: '1.25rem' }}
                     onClick={() => navigate('/menu')}
                 >
                     {t('nav.menu')}

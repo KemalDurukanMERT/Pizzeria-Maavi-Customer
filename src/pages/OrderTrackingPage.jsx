@@ -181,18 +181,11 @@ export default function OrderTrackingPage() {
                 </p>
 
                 {/* Progress Tracker */}
-                <div style={{ width: '100%', padding: '0 1rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', position: 'relative', marginBottom: '3rem' }}>
+                <div className="tracking-wrapper">
+                    <div className="status-steps-container">
                         {/* Connecting Line */}
-                        <div style={{
-                            position: 'absolute', top: '24px', left: '0', width: '100%', height: '4px',
-                            backgroundColor: 'var(--color-border)', zIndex: 0
-                        }}>
-                            <div style={{
-                                width: `${(currentStepIndex / (STATUS_STEPS.length - 1)) * 100}%`,
-                                height: '100%', backgroundColor: 'hsl(var(--color-primary))', transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
-                            }} />
-                        </div>
+                        <div className="status-line-bg" />
+                        <div className="status-line-progress" style={{ width: `${(currentStepIndex / (STATUS_STEPS.length - 1)) * 100}%` }} />
 
                         {STATUS_STEPS.map((step, index) => {
                             const isCompleted = index <= currentStepIndex;
@@ -200,23 +193,11 @@ export default function OrderTrackingPage() {
                             const Icon = step.icon;
 
                             return (
-                                <div key={step.id} style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
-                                    <div style={{
-                                        width: '48px', height: '48px', borderRadius: '50%',
-                                        backgroundColor: isCompleted ? 'hsl(var(--color-primary))' : 'hsl(var(--color-bg-paper))',
-                                        border: isCompleted ? 'none' : '2px solid var(--color-border)',
-                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        color: isCompleted ? 'white' : 'hsl(var(--color-text-secondary))',
-                                        boxShadow: isCurrent ? '0 0 0 4px hsl(var(--color-primary) / 0.2)' : 'none',
-                                        transition: 'all 0.5s ease'
-                                    }}>
+                                <div key={step.id} className={`status-step ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''}`}>
+                                    <div className="status-icon-wrapper">
                                         <Icon size={24} />
                                     </div>
-                                    <span style={{
-                                        fontSize: '0.7rem', fontWeight: isCurrent ? 'bold' : '500',
-                                        color: isCompleted ? 'hsl(var(--color-text-primary))' : 'hsl(var(--color-text-secondary))',
-                                        textAlign: 'center', maxWidth: '70px', textTransform: 'uppercase'
-                                    }}>
+                                    <span className="status-label">
                                         {step.label}
                                     </span>
                                 </div>
@@ -226,24 +207,24 @@ export default function OrderTrackingPage() {
                 </div>
             </div>
 
-            <div className="card" style={{ padding: '2rem' }}>
+            <div className="card" style={{ padding: 'min(2rem, 5vw)' }}>
                 <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'hsl(var(--color-text-primary))' }}>
                     <Package size={24} /> {t('order.details')}
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     {(order.items || []).map((item, i) => (
-                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem' }}>
+                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem', gap: '1rem' }}>
                             <div style={{ flex: 1 }}>
-                                <div style={{ fontWeight: '600', fontSize: '1.1rem', color: 'hsl(var(--color-text-primary))' }}>
+                                <div style={{ fontWeight: '600', fontSize: 'min(1.1rem, 4.5vw)', color: 'hsl(var(--color-text-primary))' }}>
                                     {item.quantity}x {item.productName || 'Pizza'}
                                 </div>
                                 {item.customizations && item.customizations.length > 0 && (
-                                    <div style={{ fontSize: '0.85rem', color: 'hsl(var(--color-text-secondary))', marginTop: '0.25rem' }}>
+                                    <div style={{ fontSize: '0.8rem', color: 'hsl(var(--color-text-secondary))', marginTop: '0.25rem' }}>
                                         {item.customizations.map(c => `${t(`customization.${c.action}`) || c.action}: ${c.name}`).join(', ')}
                                     </div>
                                 )}
                             </div>
-                            <div style={{ fontWeight: 'bold', color: 'hsl(var(--color-text-primary))' }}>
+                            <div style={{ fontWeight: 'bold', color: 'hsl(var(--color-text-primary))', whiteSpace: 'nowrap' }}>
                                 €{(item.totalPrice || 0).toFixed(2)}
                             </div>
                         </div>

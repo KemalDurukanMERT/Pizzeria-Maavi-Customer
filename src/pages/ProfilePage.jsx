@@ -74,10 +74,10 @@ export default function ProfilePage() {
 
             <div style={{ display: 'grid', gap: '2rem' }}>
                 {/* User Info Card */}
-                <div className="card" style={{ padding: '2rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem' }}>
-                        <h2 style={{ fontSize: '1.5rem' }}>Personal Information</h2>
-                        <button onClick={handleLogout} className="btn btn-ghost" style={{ color: '#ef4444' }}>
+                <div className="card" style={{ padding: 'min(2rem, 5vw)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                        <h2 style={{ fontSize: '1.5rem', margin: 0 }}>Personal Information</h2>
+                        <button onClick={handleLogout} className="btn btn-ghost" style={{ color: '#ef4444', padding: '0.4rem 0.8rem' }}>
                             <LogOut size={18} /> {t('nav.logout')}
                         </button>
                     </div>
@@ -89,7 +89,7 @@ export default function ProfilePage() {
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0', borderBottom: '1px solid var(--color-border)' }}>
                             <Mail size={20} color="hsl(var(--color-primary))" />
-                            <span>{user.email}</span>
+                            <span style={{ wordBreak: 'break-all' }}>{user.email}</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0' }}>
                             <Phone size={20} color="hsl(var(--color-primary))" />
@@ -98,8 +98,8 @@ export default function ProfilePage() {
                     </div>
 
                     <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1.5rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                            <h3 style={{ fontSize: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                            <h3 style={{ fontSize: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
                                 <MapPin size={20} /> Delivery Address
                             </h3>
                             {!editingAddress && (
@@ -111,25 +111,25 @@ export default function ProfilePage() {
 
                         {editingAddress ? (
                             <form onSubmit={handleUpdateAddress} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem' }}>
+                                <div className="address-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
                                     <input
                                         type="text" placeholder="Street" required
                                         value={addressForm.street}
                                         onChange={(e) => setAddressForm({ ...addressForm, street: e.target.value })}
-                                        style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                                        style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', backgroundColor: 'transparent', color: 'inherit' }}
                                     />
                                     <input
                                         type="text" placeholder="Postal Code" required
                                         value={addressForm.postalCode}
                                         onChange={(e) => setAddressForm({ ...addressForm, postalCode: e.target.value })}
-                                        style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                                        style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', backgroundColor: 'transparent', color: 'inherit' }}
                                     />
                                 </div>
                                 <input
                                     type="text" placeholder="City" required
                                     value={addressForm.city}
                                     onChange={(e) => setAddressForm({ ...addressForm, city: e.target.value })}
-                                    style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                                    style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', backgroundColor: 'transparent', color: 'inherit' }}
                                 />
                                 <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
                                     <button type="button" onClick={() => setEditingAddress(false)} className="btn btn-ghost">Cancel</button>

@@ -162,16 +162,17 @@ export default function CheckoutPage() {
                 </section>
 
                 {/* Delivery Method */}
-                <section className="card" style={{ padding: '1.5rem' }}>
+                <section className="card" style={{ padding: 'min(1.5rem, 4vw)' }}>
                     <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>{t('checkout.delivery')}</h2>
-                    <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
+                    <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
                         <button
                             type="button"
                             className={`btn`}
                             style={{
-                                flex: 1,
+                                flex: '1 1 200px',
                                 border: formData.deliveryType === 'DELIVERY' ? '2px solid hsl(var(--color-primary))' : '1px solid var(--color-border)',
-                                backgroundColor: formData.deliveryType === 'DELIVERY' ? 'hsl(var(--color-primary-light))' : 'white'
+                                backgroundColor: formData.deliveryType === 'DELIVERY' ? 'hsl(var(--color-primary-light))' : 'hsl(var(--color-bg-paper))',
+                                color: 'inherit'
                             }}
                             onClick={() => setFormData(prev => ({ ...prev, deliveryType: 'DELIVERY' }))}
                         >
@@ -181,9 +182,10 @@ export default function CheckoutPage() {
                             type="button"
                             className={`btn`}
                             style={{
-                                flex: 1,
+                                flex: '1 1 200px',
                                 border: formData.deliveryType === 'PICKUP' ? '2px solid hsl(var(--color-primary))' : '1px solid var(--color-border)',
-                                backgroundColor: formData.deliveryType === 'PICKUP' ? 'hsl(var(--color-primary-light))' : 'white'
+                                backgroundColor: formData.deliveryType === 'PICKUP' ? 'hsl(var(--color-primary-light))' : 'hsl(var(--color-bg-paper))',
+                                color: 'inherit'
                             }}
                             onClick={() => setFormData(prev => ({ ...prev, deliveryType: 'PICKUP' }))}
                         >
@@ -196,31 +198,31 @@ export default function CheckoutPage() {
                             <input
                                 type="text" name="street" placeholder={t('checkout.street')} required
                                 value={formData.street} onChange={handleChange}
-                                style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                                style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', backgroundColor: 'transparent', color: 'inherit' }}
                             />
-                            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(150px, 2fr) 1fr', gap: '1rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
                                 <input
                                     type="text" name="city" placeholder={t('checkout.city')} required
                                     value={formData.city} onChange={handleChange}
-                                    style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                                    style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', backgroundColor: 'transparent', color: 'inherit' }}
                                 />
                                 <input
                                     type="text" name="postalCode" placeholder={t('checkout.postalCode')} required
                                     value={formData.postalCode} onChange={handleChange}
-                                    style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                                    style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', backgroundColor: 'transparent', color: 'inherit' }}
                                 />
                             </div>
                             <textarea
                                 name="instructions" placeholder={t('checkout.instructions')}
                                 value={formData.instructions} onChange={handleChange}
-                                style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', minHeight: '80px' }}
+                                style={{ padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', minHeight: '80px', backgroundColor: 'transparent', color: 'inherit' }}
                             />
                         </div>
                     )}
                 </section>
 
                 {/* Payment Method */}
-                <section className="card" style={{ padding: '1.5rem' }}>
+                <section className="card" style={{ padding: 'min(1.5rem, 4vw)' }}>
                     <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>{t('checkout.payment')}</h2>
                     <div style={{ display: 'grid', gap: '0.75rem' }}>
                         {[
@@ -236,11 +238,11 @@ export default function CheckoutPage() {
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '1rem',
-                                    padding: '1.25rem',
+                                    padding: 'min(1.25rem, 3vw)',
                                     border: formData.paymentMethod === method.id ? `2px solid ${method.color}` : '1px solid var(--color-border)',
                                     borderRadius: 'var(--radius-md)',
                                     cursor: 'pointer',
-                                    backgroundColor: formData.paymentMethod === method.id ? `${method.color}08` : 'white',
+                                    backgroundColor: formData.paymentMethod === method.id ? `${method.color}15` : 'transparent',
                                     transition: 'all 0.2s ease',
                                     boxShadow: formData.paymentMethod === method.id ? `0 4px 12px ${method.color}15` : 'none'
                                 }}
@@ -261,13 +263,14 @@ export default function CheckoutPage() {
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    color: 'white'
+                                    color: 'white',
+                                    flexShrink: 0
                                 }}>
-                                    <method.icon size={24} />
+                                    <method.icon size={22} />
                                 </div>
-                                <div style={{ flex: 1 }}>
-                                    <div style={{ fontWeight: 600, color: 'black' }}>{method.label}</div>
-                                    <div style={{ fontSize: '0.75rem', color: 'hsl(var(--color-text-secondary))' }}>
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                    <div style={{ fontWeight: 600, color: 'inherit', fontSize: '0.95rem' }}>{method.label}</div>
+                                    <div style={{ fontSize: '0.75rem', color: 'hsl(var(--color-text-secondary))', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                         {method.id === 'VERKKOMAKSU' ? 'Kaikki suomalaiset pankit' :
                                             method.id === 'CARD' ? 'Visa, Mastercard, AMEX' :
                                                 method.id === 'EPASSI' ? 'Epassi-sovellus' :
@@ -275,7 +278,7 @@ export default function CheckoutPage() {
                                     </div>
                                 </div>
                                 {formData.paymentMethod === method.id && (
-                                    <CheckCircle size={20} color={method.color} />
+                                    <CheckCircle size={20} color={method.color} className="hide-mobile" />
                                 )}
                             </label>
                         ))}

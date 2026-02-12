@@ -65,21 +65,24 @@ export default function MyOrdersPage() {
                             key={order.id}
                             className="card"
                             style={{
-                                padding: '1.5rem',
+                                padding: 'min(1.5rem, 4vw)',
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
                                 cursor: 'pointer',
                                 transition: 'transform 0.2s ease',
+                                flexWrap: 'wrap',
+                                gap: '1rem'
                             }}
                             onClick={() => navigate(`/track/${order.id}`)}
                             onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                             onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                         >
-                            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', gap: 'min(1.5rem, 3vw)', alignItems: 'center', flex: 1, minWidth: '200px' }}>
                                 <div style={{
                                     width: '48px',
                                     height: '48px',
+                                    flexShrink: 0,
                                     borderRadius: '12px',
                                     backgroundColor: `${getStatusColor(order.status)}15`,
                                     color: getStatusColor(order.status),
@@ -91,34 +94,35 @@ export default function MyOrdersPage() {
                                         order.status === 'COMPLETED' ? <CheckCircle size={24} /> :
                                             <Package size={24} />}
                                 </div>
-                                <div>
-                                    <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>Order #{order.orderNumber}</div>
-                                    <div style={{ fontSize: '0.85rem', color: 'hsl(var(--color-text-secondary))', marginBottom: '0.5rem' }}>
+                                <div style={{ minWidth: 0 }}>
+                                    <div style={{ fontWeight: 'bold', fontSize: '1.1rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Order #{order.orderNumber}</div>
+                                    <div style={{ fontSize: '0.85rem', color: 'hsl(var(--color-text-secondary))', marginBottom: '0.4rem' }}>
                                         {new Date(order.createdAt).toLocaleDateString('fi-FI', {
                                             day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
                                         })}
                                     </div>
                                     <span style={{
-                                        fontSize: '0.75rem',
-                                        fontWeight: '600',
-                                        padding: '0.25rem 0.75rem',
+                                        fontSize: '0.7rem',
+                                        fontWeight: '700',
+                                        padding: '0.2rem 0.6rem',
                                         borderRadius: '100px',
                                         backgroundColor: `${getStatusColor(order.status)}15`,
                                         color: getStatusColor(order.status),
-                                        textTransform: 'uppercase'
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px'
                                     }}>
                                         {t(`order.status.${order.status.toLowerCase()}`) || order.status}
                                     </span>
                                 </div>
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
                                 <div style={{ textAlign: 'right' }}>
                                     <div style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>€{order.total.toFixed(2)}</div>
                                     <div style={{ fontSize: '0.8rem', color: 'hsl(var(--color-text-secondary))' }}>
                                         {order.items.length} {order.items.length === 1 ? 'item' : 'items'}
                                     </div>
                                 </div>
-                                <ChevronRight size={20} color="hsl(var(--color-border))" />
+                                <ChevronRight size={20} color="hsl(var(--color-border))" className="hide-mobile" />
                             </div>
                         </div>
                     ))}

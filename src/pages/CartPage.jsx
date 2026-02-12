@@ -30,11 +30,11 @@ export default function CartPage() {
         <div className="container" style={{ padding: '2rem 1rem' }}>
             <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t('cart.title')}</h1>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)', gap: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                 {/* Cart Items List */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     {cart.map((item, index) => (
-                        <div key={`${item.productId}-${index}`} className="card" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                        <div key={`${item.productId}-${index}`} className="card" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
                             <div style={{ width: '80px', height: '80px', flexShrink: 0 }}>
                                 <img
                                     src={item.image ? item.image.startsWith('http') ? item.image : `${BASE_URL}${item.image}` : 'https://placehold.co/400x300?text=No+Image'}
@@ -43,8 +43,8 @@ export default function CartPage() {
                                 />
                             </div>
 
-                            <div style={{ flex: 1 }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                            <div style={{ flex: 1, minWidth: '200px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem', gap: '1rem' }}>
                                     <h3 style={{ fontSize: '1.1rem', fontWeight: '600' }}>{item.name}</h3>
                                     <span style={{ fontWeight: '600' }}>€{(item.price * item.quantity).toFixed(2)}</span>
                                 </div>
@@ -64,24 +64,24 @@ export default function CartPage() {
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                                         <button
                                             className="btn"
-                                            style={{ border: '1px solid var(--color-border)', padding: '0.25rem' }}
+                                            style={{ border: '1px solid var(--color-border)', padding: '0.4rem', background: 'transparent', color: 'inherit' }}
                                             onClick={() => updateQuantity(index, item.quantity - 1)}
                                         >
-                                            <Minus size={16} />
+                                            <Minus size={14} />
                                         </button>
-                                        <span style={{ minWidth: '1.5rem', textAlign: 'center' }}>{item.quantity}</span>
+                                        <span style={{ minWidth: '1.5rem', textAlign: 'center', fontWeight: '600' }}>{item.quantity}</span>
                                         <button
                                             className="btn"
-                                            style={{ border: '1px solid var(--color-border)', padding: '0.25rem' }}
+                                            style={{ border: '1px solid var(--color-border)', padding: '0.4rem', background: 'transparent', color: 'inherit' }}
                                             onClick={() => updateQuantity(index, item.quantity + 1)}
                                         >
-                                            <Plus size={16} />
+                                            <Plus size={14} />
                                         </button>
                                     </div>
 
                                     <button
                                         className="btn"
-                                        style={{ color: '#ef4444', padding: '0.5rem' }}
+                                        style={{ color: '#ef4444', padding: '0.4rem', background: 'transparent' }}
                                         onClick={() => removeFromCart(index)}
                                     >
                                         <Trash2 size={18} />
@@ -100,7 +100,8 @@ export default function CartPage() {
                             color: 'hsl(var(--color-text-secondary))',
                             textDecoration: 'underline',
                             cursor: 'pointer',
-                            marginTop: '1rem'
+                            marginTop: '1rem',
+                            fontSize: '0.9rem'
                         }}
                     >
                         {t('cart.clear')}
@@ -108,7 +109,7 @@ export default function CartPage() {
                 </div>
 
                 {/* Order Summary */}
-                <div className="card" style={{ padding: '1.5rem', height: 'fit-content' }}>
+                <div className="card" style={{ padding: '1.5rem', height: 'fit-content', position: 'sticky', top: '100px' }}>
                     <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>{t('cart.summary')}</h2>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
@@ -128,7 +129,7 @@ export default function CartPage() {
 
                     <button
                         className="btn btn-primary"
-                        style={{ width: '100%', padding: '1rem', gap: '0.5rem' }}
+                        style={{ width: '100%', padding: '1rem', gap: '0.5rem', borderRadius: 'var(--radius-md)' }}
                         onClick={() => navigate('/checkout')}
                     >
                         {t('cart.checkout')} <ArrowRight size={20} />

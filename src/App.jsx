@@ -13,10 +13,13 @@ import OrderTrackingPage from './pages/OrderTrackingPage';
 import MockPaymentPage from './pages/MockPaymentPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     return (
         <div className="app-layout">
+            <ToastContainer position="bottom-right" theme="colored" />
             <Header />
             <main className="main-content">
                 <Routes>

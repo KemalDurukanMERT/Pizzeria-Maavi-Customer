@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Mail, Lock } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -19,9 +20,12 @@ export default function LoginPage() {
         setError(null);
         try {
             await login(formData.email, formData.password);
+            toast.success(t('auth.success') || 'Logged in successfully!');
             navigate('/');
         } catch (err) {
-            setError(err.response?.data?.message || 'Invalid credentials');
+            const msg = err.response?.data?.message || 'Invalid credentials';
+            setError(msg);
+            toast.error(msg);
         } finally {
             setLoading(false);
         }

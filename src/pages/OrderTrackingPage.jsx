@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { io } from 'socket.io-client';
 import { CheckCircle, Clock, Truck, ChefHat, Package, ShoppingBag, ChevronRight, AlertCircle } from 'lucide-react';
 import api, { BASE_URL } from '../services/api';
@@ -78,6 +79,8 @@ export default function OrderTrackingPage() {
         const id = searchId.trim();
         if (id) {
             navigate(`/track/${id}`);
+        } else {
+            toast.warning('Please enter an Order ID');
         }
     };
 

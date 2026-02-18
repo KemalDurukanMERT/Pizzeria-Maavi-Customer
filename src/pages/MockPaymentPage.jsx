@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { ShieldCheck, XCircle, CheckCircle, CreditCard, Wallet, Banknote } from 'lucide-react';
 import api from '../services/api';
+import { toast } from 'react-toastify';
 
 export default function MockPaymentPage() {
     const [searchParams] = useSearchParams();
@@ -48,7 +49,7 @@ export default function MockPaymentPage() {
             }
         } catch (err) {
             console.error('Payment simulation failed', err);
-            alert('Simulation failed. Check console.');
+            toast.error('Simulation failed. Check console.');
             setProcessing(false);
         }
     };

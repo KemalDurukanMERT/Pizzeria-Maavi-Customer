@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Mail, Lock, User, Phone } from 'lucide-react';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -34,7 +35,9 @@ export default function RegisterPage() {
         setError(null);
 
         if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match');
+            const msg = 'Passwords do not match';
+            setError(msg);
+            toast.warning(msg);
             setLoading(false);
             return;
         }
@@ -55,9 +58,12 @@ export default function RegisterPage() {
 
             // Auto login after register
             await login(formData.email, formData.password);
+            toast.success('Account created successfully!');
             navigate('/');
         } catch (err) {
-            setError(err.response?.data?.message || 'Registration failed');
+            const msg = err.response?.data?.message || 'Registration failed';
+            setError(msg);
+            toast.error(msg);
         } finally {
             setLoading(false);
         }

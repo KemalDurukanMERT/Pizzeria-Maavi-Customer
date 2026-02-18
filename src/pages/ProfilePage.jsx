@@ -4,6 +4,7 @@ import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function ProfilePage() {
     const { user, logout } = useAuth();
@@ -50,12 +51,13 @@ export default function ProfilePage() {
             await api.put('/users/profile', {
                 address: addressForm
             });
+            toast.success('Address updated successfully!');
             // Ideally we'd update the context here, but at least the UI will reflect local change
             // For now, reload or just close
-            window.location.reload(); // Quickest way to sync AuthContext user
+            setTimeout(() => window.location.reload(), 1500); // Quickest way to sync AuthContext user
         } catch (err) {
             console.error(err);
-            alert('Failed to update address');
+            toast.error('Failed to update address');
         } finally {
             setUpdating(false);
         }

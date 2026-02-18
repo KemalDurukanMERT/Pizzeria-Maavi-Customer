@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ArrowLeft, ShoppingCart, Clock } from 'lucide-react';
 import api, { BASE_URL } from '../services/api';
 import { useCart } from '../context/CartContext';
@@ -44,6 +45,7 @@ export default function ProductPage() {
 
     const handleAddToCart = () => {
         addToCart(product, quantity, customizations);
+        toast.success(t('cart.added') || `${product.name} added to cart!`);
         navigate('/menu');
     };
 

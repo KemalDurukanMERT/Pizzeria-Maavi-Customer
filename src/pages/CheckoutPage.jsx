@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { CreditCard, Wallet, Banknote, AlertCircle, CheckCircle } from 'lucide-react';
 import api from '../services/api';
 import { useCart } from '../context/CartContext';
@@ -100,11 +101,14 @@ export default function CheckoutPage() {
             }
 
             clearCart();
+            toast.success('Order placed successfully!');
             navigate(`/track/${order.id}`);
 
         } catch (err) {
             console.error(err);
-            setError(err.response?.data?.message || 'Failed to place order. Please try again.');
+            const msg = err.response?.data?.message || 'Failed to place order. Please try again.';
+            setError(msg);
+            toast.error(msg);
             setLoading(false);
         }
     };

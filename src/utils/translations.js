@@ -56,6 +56,7 @@ export const translations = {
         'checkout.method.pickup': 'Pickup',
         'checkout.firstName': 'First Name',
         'checkout.lastName': 'Last Name',
+        'checkout.address': 'Address',
         'checkout.email': 'Email',
         'checkout.phone': 'Phone Number',
         'checkout.street': 'Street Address',
@@ -87,6 +88,7 @@ export const translations = {
         'auth.submit.register': 'Register',
         'auth.hasAccount': 'Already have an account?',
         'auth.noAccount': "Don't have an account?",
+        'auth.success': "Logged in successfully!",
     },
     fi: {
         // Header
@@ -148,6 +150,7 @@ export const translations = {
         'checkout.email': 'Sähköposti',
         'checkout.phone': 'Puhelinnumero',
         'checkout.street': 'Katuosoite',
+        'checkout.address': 'Osoite',
         'checkout.city': 'Kaupunki',
         'checkout.postalCode': 'Postinumero',
         'checkout.instructions': 'Lisätiedot (ovikoodi, ym.)',
@@ -176,5 +179,7 @@ export const translations = {
         'auth.submit.register': 'Rekisteröidy',
         'auth.hasAccount': 'Onko sinulla jo tili?',
         'auth.noAccount': "Eikö sinulla ole tiliä?",
+        'auth.success': "Logged in successfully!",
+
     }
 };
